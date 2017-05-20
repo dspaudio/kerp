@@ -32,7 +32,7 @@ class Product extends Model
 	 */
 	public function product_type()
 	{
-		return $this->belongsTo('App\ProductType','product_type_id');
+		return $this->belongsTo('App\ProductType', 'product_type_id');
     }
 
 	/**
@@ -41,6 +41,6 @@ class Product extends Model
 	 */
 	public function manufacture()
 	{
-		return $this->belongsTo('App\Manufacture','manufacture_id');
+		return $this->belongsTo('App\Manufacture', 'manufacture_id');
     }
 }

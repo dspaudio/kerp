@@ -36,7 +36,7 @@ class ShipInfo extends Model
 	 */
 	public function address()
 	{
-		return $this->belongsTo('App\Address','address_id','id');
+		return $this->belongsTo('App\Address', 'address_id', 'id');
     }
 
 	/**
@@ -45,7 +45,7 @@ class ShipInfo extends Model
 	 */
 	public function staff()
 	{
-		return $this->belongsTo('App\Staff','staff_id','id');
+		return $this->belongsTo('App\Staff', 'staff_id', 'id');
     }
 
 

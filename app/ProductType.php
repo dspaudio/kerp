@@ -21,7 +21,7 @@ class ProductType extends Model
 	 */
 	public function product()
 	{
-		return $this->hasMany('App\Product','product_type_id','id');
+		return $this->hasMany('App\Product', 'product_type_id', 'id');
     }
 
 }

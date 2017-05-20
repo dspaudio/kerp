@@ -22,7 +22,7 @@ class Supplier extends Model
 	 */
 	public function order_in_info()
 	{
-		return $this->hasMany('App\OrderInInfo','supplier_id','id');
+		return $this->hasMany('App\OrderInInfo', 'supplier_id', 'id');
     }
 
 }

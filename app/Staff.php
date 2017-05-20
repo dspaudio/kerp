@@ -20,7 +20,7 @@ class Staff extends Model
 	 */
 	public function ship_info()
 	{
-		return $this->hasMany('App\ShipInfo','staff_id','id');
+		return $this->hasMany('App\ShipInfo', 'staff_id', 'id');
     }
 
 	/**
@@ -29,7 +29,7 @@ class Staff extends Model
 	 */
 	public function ship_package_content()
 	{
-		return $this->hasMany('App\ShipPackageContent','staff_id','id');
+		return $this->hasMany('App\ShipPackageContent', 'staff_id', 'id');
     }
 
 	/**
@@ -38,7 +38,7 @@ class Staff extends Model
 	 */
 	public function order_in_info()
 	{
-		return $this->hasMany('App\OrderInInfo','staff_id','id');
+		return $this->hasMany('App\OrderInInfo', 'staff_id', 'id');
     }
 
 

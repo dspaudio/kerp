@@ -22,7 +22,7 @@ class Contact extends Model
 	 */
 	public function address()
 	{
-		return $this->belongsTo('App\Address','address_id','id');
+		return $this->belongsTo('App\Address', 'address_id', 'id');
     }
 
 }

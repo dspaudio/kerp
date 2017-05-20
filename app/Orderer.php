@@ -23,7 +23,16 @@ class Orderer extends Model
 	 */
 	public function customer()
 	{
-		return $this->belongsTo('App\Customer','customer_id','id');
+		return $this->belongsTo('App\Customer', 'customer_id', 'id');
+    }
+
+	/**
+	 * SalesInfo 관계설정
+	 * @return \Illuminate\Database\Eloquent\Relations\HasMany
+	 */
+	public function sales_info()
+	{
+		return $this->hasMany('App\SalesInfo', 'orderer_id', 'id');
     }
 
 }

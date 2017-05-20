@@ -21,7 +21,7 @@ class Manufacture extends Model
 	 */
 	public function product()
 	{
-		return $this->hasMany('App\Product','manufacture_id', 'id');
+		return $this->hasMany('App\Product', 'manufacture_id', 'id');
     }
 
 }

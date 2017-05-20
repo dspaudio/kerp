@@ -24,7 +24,7 @@ class ShipPackageContent extends Model
 	 */
 	public function ship_info()
 	{
-		return $this->belongsTo('App\ShipInfo','ship_info_id','id');
+		return $this->belongsTo('App\ShipInfo', 'ship_info_id', 'id');
     }
 
 	/**
@@ -33,7 +33,7 @@ class ShipPackageContent extends Model
 	 */
 	public function sales_info()
 	{
-		return $this->belongsTo('App\SalesInfo','sales_info_id','id');
+		return $this->belongsTo('App\SalesInfo', 'sales_info_id', 'id');
     }
 
 	/**
@@ -42,7 +42,7 @@ class ShipPackageContent extends Model
 	 */
 	public function staff()
 	{
-		return $this->belongsTo('App\Staff','staff_id','id');
+		return $this->belongsTo('App\Staff', 'staff_id', 'id');
     }
 
 

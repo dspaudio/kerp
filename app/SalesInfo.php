@@ -16,6 +16,17 @@ class SalesInfo extends Model
 		'customer_id',
 		'orderer_id',
 		'product_id',
+		'product_code',
+		'product_name',
+		'product_size',
+		'product_quantity',
+		'product_relate',
+	    'product_type_id',
+	    'product_type_code',
+	    'product_type_name',
+	    'manufacture_id',
+	    'manufacture_name',
+	    'manufacture_code',
 		'sales_quantity',
 		'unit_price',
 		'charged',
@@ -24,7 +35,7 @@ class SalesInfo extends Model
 		'ship_out_complete_date',
 		'payment_type_code',
 		'order_type_code',
-	    'sales_cancel_date',
+		'sales_cancel_date',
 		'memo',
     ];
 
@@ -34,7 +45,7 @@ class SalesInfo extends Model
 	 */
 	public function order_in_info()
 	{
-		return $this->hasMany('App\OrderInInfo','sales_info_id','id');
+		return $this->hasMany('App\OrderInInfo', 'sales_info_id', 'id');
     }
 
 	/**
@@ -43,7 +54,7 @@ class SalesInfo extends Model
 	 */
 	public function customer()
 	{
-		return $this->belongsTo('App\Customer','customer_id','id');
+		return $this->belongsTo('App\Customer', 'customer_id', 'id');
     }
 
 	/**
@@ -52,7 +63,7 @@ class SalesInfo extends Model
 	 */
 	public function orderer()
 	{
-		return $this->belongsTo('App\Orderer','orderer_id','id');
+		return $this->belongsTo('App\Orderer', 'orderer_id', 'id');
     }
 
 	/**
@@ -61,7 +72,7 @@ class SalesInfo extends Model
 	 */
 	public function product()
 	{
-		return $this->belongsTo('App\Product','product_id','id');
+		return $this->belongsTo('App\Product', 'product_id', 'id');
     }
 
 	/**
@@ -70,7 +81,7 @@ class SalesInfo extends Model
 	 */
 	public function staff()
 	{
-		return $this->belongsTo('App\Staff','staff_id','id');
+		return $this->belongsTo('App\Staff', 'staff_id', 'id');
 	}
 
 }

@@ -16,7 +16,7 @@ class CreateManufactureTable extends Migration
         Schema::create('manufacture', function (Blueprint $table) {
             $table->increments('id')->comment('프라이머리키');
             $table->string('manufacture_name')->comment('이름');
-            $table->string('manufacture_code')->unique->comment('code');
+            $table->string('manufacture_code')->unique()->comment('code');
             $table->string('memo')->nullable()->comment('특이사항');
             $table->softDeletes();
             $table->timestamps();

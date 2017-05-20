@@ -18,7 +18,7 @@ class CreateContactTable extends Migration
             $table->integer('address_id')->comment('포린.당 연락처가 속하는 주소 특정가능하게');
             $table->string('contact_type')->nullable()->comment('연락처종류 전화 팩스 등등');
             $table->string('contact_num')->comment('연락처');
-            $table->string('memo')->nullable->comment('특이사항');
+            $table->string('memo')->nullable()->comment('특이사항');
             $table->softDeletes();
             $table->timestamps();
         });

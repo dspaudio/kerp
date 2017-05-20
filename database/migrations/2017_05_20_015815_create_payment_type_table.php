@@ -15,7 +15,7 @@ class CreatePaymentTypeTable extends Migration
     {
         Schema::create('payment_type', function (Blueprint $table) {
             $table->increments('id')->comment('프라이머리키');
-            $table->string('payment_type_code')->unique->comment('결제방법code');
+            $table->string('payment_type_code')->unique()->comment('결제방법code');
             $table->string('payment_type_name')->comment('결제방법이름');
             $table->string('memo')->nullable()->comment('특이사항');
             $table->softDeletes();

@@ -29,7 +29,7 @@ class CreateSalesInfoTable extends Migration
             $table->timestamp('ship_out_complete_date')->nullable()->comment('발송완료일');
             $table->string('payment_type_code')->nullable()->comment('결제방법코드');
             $table->integer('order_type_code')->comment('주문방법코드');
-            $table->timestamp('sales_cancel_date')->nulllable()->comment('주문취소일');
+            $table->timestamp('sales_cancel_date')->nullable()->comment('주문취소일');
             $table->string('memo')->nullable()->comment('특이사항');
             $table->softDeletes();
             $table->timestamps();

@@ -14,4 +14,14 @@ class Manufacture extends Model
 		'manufacture_code',
 		'memo',
     ];
+
+	/**
+	 * Product 관계설정
+	 * @return \Illuminate\Database\Eloquent\Relations\HasMany
+	 */
+	public function product()
+	{
+		return $this->hasMany('App\Product','manufacture_id', 'id');
+    }
+
 }

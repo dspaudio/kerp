@@ -15,8 +15,8 @@ class CreateProductTable extends Migration
     {
         Schema::create('product', function (Blueprint $table) {
             $table->increments('id')->comment('프라이머리키');
-            $table->integer('product_type_code')->nullable()->comment('포린.제품타입');
-            $table->integer('manufacture_code')->nullable()->comment('포린.제조사');
+            $table->integer('product_type_id')->nullable()->comment('product_type.id, 포린.제품타입');
+            $table->integer('manufacture_id')->nullable()->comment('manufacture.id, 포린.제조사');
             $table->string('product_code')->unique()->comment('제품코드. 제품 특정할수 있는값');
             $table->string('name')->comment('제품명 제품케이스에 써있고 화면표시할이름');
             $table->string('size')->nullable()->comment('규격 케이스에 쓰인값, 가로세로두께등');

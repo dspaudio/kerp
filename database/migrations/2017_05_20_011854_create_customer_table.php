@@ -20,9 +20,9 @@ class CreateCustomerTable extends Migration
             $table->string('director_name_jp')->nullable()->comment('원장일본어');
             $table->string('clinic_name')->nullable()->comment('병원이름');
             $table->string('clinic_name_jp')->nullable()->comment('병원이름일본어');
-            $table->string('default_staff_code')->nullable()->comment('포린.담당직원 있으면 쓰기');
-            $table->string('default_order_type_code')->nullable()->comment('포린.기본 주문방식 있으면 넣기');
-            $table->string('default_payment_type_code')->nullable()->comment('포린.기본 결제방식 있으면 넣기');
+            $table->integer('staff_id')->nullable()->comment('포린.담당직원 있으면 쓰기');
+            $table->integer('default_order_type_code')->nullable()->comment('기본 주문방식 있으면 넣기');
+            $table->integer('default_payment_type_code')->nullable()->comment('기본 결제방식 있으면 넣기');
             $table->string('memo')->nullable()->comment('특이사항');
             $table->softDeletes();
             $table->timestamps();

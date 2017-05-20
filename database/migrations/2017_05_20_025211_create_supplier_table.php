@@ -15,7 +15,6 @@ class CreateSupplierTable extends Migration
     {
         Schema::create('supplier', function (Blueprint $table) {
             $table->increments('id')->comment('프라이머리키');
-            $table->string('supplier_code')->unique()->comment('특정할수 있게');
             $table->string('supplier_name')->comment('특정할수 있게');
             $table->string('supplier_staff_name')->nullable()->comment('');
             $table->string('supplier_staff_contact')->nullable()->comment('');

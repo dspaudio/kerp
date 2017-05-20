@@ -10,10 +10,19 @@ class Supplier extends Model
 
     protected $fillable = [
 		'id',
-		'supplier_code',
 		'supplier_name',
 		'supplier_staff_name',
 		'supplier_staff_contact',
 		'memo',
     ];
+
+	/**
+	 * OrderInInfo 관계설정
+	 * @return \Illuminate\Database\Eloquent\Relations\HasMany
+	 */
+	public function order_in_info()
+	{
+		return $this->hasMany('App\OrderInInfo','supplier_id','id');
+    }
+
 }

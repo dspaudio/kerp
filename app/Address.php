@@ -18,4 +18,20 @@ class Address extends Model
 		'zip_code',
 		'memo',
     ];
+
+	/**
+	 * Customer 관계설정
+	 * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+	 */
+	public function customer()
+	{
+		return $this->belongsTo('App\Customer','customer_id','id');
+    }
+
+	public function contact()
+	{
+		return $this->hasMany('App\Contact','address_id','id');
+    }
+
+
 }

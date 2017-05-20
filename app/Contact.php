@@ -15,4 +15,14 @@ class Contact extends Model
 		'contact_num',
 		'memo',
     ];
+
+	/**
+	 * Address 관계설정
+	 * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+	 */
+	public function address()
+	{
+		return $this->belongsTo('App\Address','address_id','id');
+    }
+
 }

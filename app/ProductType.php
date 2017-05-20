@@ -14,4 +14,14 @@ class ProductType extends Model
 		'product_type_name',
 		'memo',
     ];
+
+	/**
+	 * Product 관계설정
+	 * @return \Illuminate\Database\Eloquent\Relations\HasMany
+	 */
+	public function product()
+	{
+		return $this->hasMany('App\Product','product_type_id','id');
+    }
+
 }

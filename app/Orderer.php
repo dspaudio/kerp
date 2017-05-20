@@ -16,4 +16,14 @@ class Orderer extends Model
 		'orderer_email',
 		'memo',
     ];
+
+	/**
+	 * Customer 관계설정
+	 * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+	 */
+	public function customer()
+	{
+		return $this->belongsTo('App\Customer','customer_id','id');
+    }
+
 }

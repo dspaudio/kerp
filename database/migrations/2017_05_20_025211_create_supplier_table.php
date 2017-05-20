@@ -32,6 +32,6 @@ class CreateSupplierTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('order_in_info');
+        Schema::dropIfExists('supplier');
     }
 }

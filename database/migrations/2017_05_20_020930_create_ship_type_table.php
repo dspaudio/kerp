@@ -15,7 +15,7 @@ class CreateShipTypeTable extends Migration
     {
         Schema::create('ship_type', function (Blueprint $table) {
             $table->increments('id')->comment('프라이머리키');
-            $table->string('ship_type_code')->unique->comment('발송방법code');
+            $table->string('ship_type_code')->unique()->comment('발송방법code');
             $table->string('ship_type_name')->comment('발송방법이름');
             $table->string('memo')->nullable()->comment('특이사항');
             $table->softDeletes();

@@ -22,7 +22,7 @@ class CreateShipInfoTable extends Migration
             $table->string('ship_staff_code')->comment('포린.발송담당 직원 code');
             $table->timestamp('ship_out_date')->nullable()->comment('발송나간날짜');
             $table->timestamp('ship_received_date')->nullable()->comment('제품도착날짜');
-            $table->string('ship_invoce_code')->nullable()->comment('포린.송장번호');
+            $table->string('ship_invoice_code')->nullable()->comment('포린.송장번호');
             $table->string('memo')->nullable()->comment('특이사항');
             $table->softDeletes();
             $table->timestamps();

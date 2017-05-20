@@ -1,0 +1,17 @@
+<?php
+
+namespace App;
+
+use Illuminate\Database\Eloquent\Model;
+
+class ProductType extends Model
+{
+    protected $table = 'product_type';
+
+    protected $fillable = [
+		'id',
+		'product_type_code',
+		'product_type_name',
+		'memo',
+    ];
+}

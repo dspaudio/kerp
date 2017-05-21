@@ -54,17 +54,18 @@ class OrderInInfo extends Model
 			[
 				'sales_info' => function($query) use($parameter) {
 					$query->where(function ($query) use ($parameter) {
-						if ($parameter['search_type'] == 'product_name') {
-							$query->where('product_name', 'regexp', $parameter['keyword']);
+						if (isset($parameter['product_search_string'])) {
+							$query->where('product_code', 'regexp', $parameter['product_search_string'])
+								->orWhere('product_name', 'regexp', $parameter['product_search_string'])
+								->orWhere('product_type_code', 'regexp', $parameter['product_search_string'])
+								->orWhere('product_type_name', 'regexp', $parameter['product_search_string']);
 						}
 					})
-					->orWhere(function($query) use($parameter) {
-						if ($parameter['search_type'] == 'product_code') {
-							$query->where('product_code', 'regexp', $parameter['keyword']);
-						}
-					})
-					->orWhere(function ($query) use ($parameter) {
-						if ($parameter['search_type'] == 'staff_id') {
+						/**
+						 * 영업담당직원은 텍스트입력 아니고 드롭다운 선택으로 검색하게 한다 -> 선택한 영업직원의 id로 검색
+						 */
+					->where(function ($query) use ($parameter) {
+						if ($parameter['staff_id'] > 0 ) {
 							$query->where('staff_id', $parameter['staff_id']);
 						}
 					});
@@ -72,8 +73,8 @@ class OrderInInfo extends Model
 			], [
 				'supplier' => function ($query) use ($parameter) {
 					$query->where(function ($query) use ($parameter) {
-						if ($parameter['search_type'] == 'supplier_name') {
-							$query->where('supplier_name', $parameter['keyword']);
+						if (isset($parameter['supplier_name'])) {
+							$query->where('supplier_name', 'regexp', $parameter['supplier_name']);
 						}
 					});
 				}
@@ -86,18 +87,18 @@ class OrderInInfo extends Model
 		 * order_in_received
 		 */
 		->where(function($query) use($parameter) {
-			if ($parameter['search_type'] == 'order_in_made' && isset($parameter['search_date'])) {
-				$query->whereDate('order_in_made', $parameter['search_date']);
+			if (isset($parameter['order_in_made'])) {
+				$query->whereDate('order_in_made', $parameter['order_in_made']);
 			}
 		})
-		->orWhere(function($query) use($parameter) {
-			if ($parameter['search_type'] == 'order_in_expect' && isset($parameter['search_date'])) {
-				$query->whereDate('order_in_expect', $parameter['search_date']);
+		->where(function($query) use($parameter) {
+			if (isset($parameter['order_in_expect'])) {
+				$query->whereDate('order_in_expect', $parameter['order_in_expect']);
 			}
 		})
-		->orWhere(function($query) use($parameter) {
-			if ($parameter['search_type'] == 'order_in_received' && isset($parameter['search_date'])) {
-				$query->whereDate('order_in_received', $parameter['search_date']);
+		->where(function($query) use($parameter) {
+			if (isset($parameter['order_in_received'])) {
+				$query->whereDate('order_in_received', $parameter['order_in_received']);
 			}
 		})
 		->orderBy($parameter['sort_field'], $parameter['orderby'])

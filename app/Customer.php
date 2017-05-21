@@ -60,46 +60,32 @@ class Customer extends Model
 			[
 				'orderer' => function($query) use($parameter){
 					$query->where(function($query) use($parameter){
-						if ($parameter['search_type'] == 'orderer_name') {
-							$query->where('orderer_name', 'regexp', $parameter['keyword']);
-						}
-					})
-					->orWhere(function($query) use($parameter){
-						if ($parameter['search_type'] == 'orderer_name_jp') {
-							$query->where('orderer_name_jp', 'regexp', $parameter['keyword']);
-						}
-					})
-					->orWhere(function($query) use($parameter){
-						if ($parameter['search_type'] == 'orderer_email') {
-							$query->where('orderer_email', 'regexp', $parameter['keyword']);
+						if (isset($parameter['customer_search_string'])) {
+							$query->where('orderer_name', 'regexp', $parameter['customer_search_string'])
+								->orWhere('orderer_name_jp', 'regexp', $parameter['customer_search_string'])
+								->orWhere('orderer_email', 'regexp', $parameter['customer_search_string']);
 						}
 					});
 				}
 			],
 			[
 				'address' => function($query) use($parameter){
-					$query->with('contact')->where(function($query) use($parameter){
-						if ($parameter['search_type'] == 'addressee') {
-							$query->where('addressee','regexp', $parameter['keyword']);
+					$query->with('contact')
+					->where(function($query) use($parameter){
+						if ($parameter['search_type'] == 'addressee_search_string') {
+							$query->where('addressee','regexp', $parameter['keyword'])
+								->orWhere('addressee_jp', 'regexp', $parameter['keyword']);
 						}
 					})
-					->orWhere(function ($query) use ($parameter) {
-						if ($parameter['search_type'] == 'addressee_jp') {
-							$query->where('addressee_jp', 'regexp', $parameter['keyword']);
+
+					->where(function ($query) use ($parameter) {
+						if (isset($parameter['address_search_string'])) {
+							$query->where('address', 'regexp', $parameter['address_search_string'])
+								->orWhere('address_jp', 'regexp', $parameter['address_search_string']);
 						}
 					})
-					->orWhere(function ($query) use ($parameter) {
-						if ($parameter['search_type'] == 'address') {
-							$query->where('address', 'regexp', $parameter['keyword']);
-						}
-					})
-					->orWhere(function ($query) use ($parameter) {
-						if ($parameter['search_type'] == 'address_jp') {
-							$query->where('address_jp', 'regexp', $parameter['keyword']);
-						}
-					})
-					->orWhere(function ($query) use ($parameter) {
-						if ($parameter['search_type'] == 'zip_code') {
+					->where(function ($query) use ($parameter) {
+						if (isset($parameter['zip_code'])) {
 							$query->where('zip_code', 'regexp', $parameter['keyword']);
 						}
 					});
@@ -107,32 +93,16 @@ class Customer extends Model
 			]
 		)
 		->where(function($query) use($parameter) {
-			if ($parameter['search_type'] == 'customer_name') {
-				$query->where('customer_name', 'regexp' ,$parameter['keyword']);
+			if (isset($parameter['customer_search_string'])) {
+				$query->where('customer_name', 'regexp' ,$parameter['customer_search_string'])
+					->orWhere('director_name', 'regexp', $parameter['customer_search_string'])
+					->orWhere('clinic_name', 'regexp', $parameter['customer_search_string'])
+					->orWhere('director_name_jp', 'regexp', $parameter['customer_search_string'])
+					->orWhere('clinic_name_jp', 'regexp', $parameter['customer_search_string']);
 			}
 		})
-		->orWhere(function($query) use($parameter) {
-			if ($parameter['search_type'] == 'director_name') {
-				$query->where('director_name', 'regexp' ,$parameter['keyword']);
-			}
-		})
-		->orWhere(function($query) use($parameter) {
-			if ($parameter['search_type'] == 'director_name_jp') {
-				$query->where('director_name_jp', 'regexp' ,$parameter['keyword']);
-			}
-		})
-		->orWhere(function($query) use($parameter) {
-			if ($parameter['search_type'] == 'clinic_name') {
-				$query->where('clinic_name', 'regexp' ,$parameter['keyword']);
-			}
-		})
-		->orWhere(function($query) use($parameter) {
-			if ($parameter['search_type'] == 'clinic_name_jp') {
-				$query->where('clinic_name_jp', 'regexp' ,$parameter['keyword']);
-			}
-		})
-		->orWhere(function ($query) use ($parameter) {
-			if ($parameter['search_type'] == 'default_payment_type_code') {
+		->where(function ($query) use ($parameter) {
+			if ($parameter['default_payment_type_code'] > 0 ) {
 				$query->where('default_payment_type_code', $parameter['default_payment_type_code']);
 			}
 		})

@@ -102,13 +102,37 @@ class Customer extends Model
 			}
 		})
 		->where(function ($query) use ($parameter) {
-			if ($parameter['default_payment_type_code'] > 0 ) {
+			if (isset($parameter['default_payment_type_code']) && $parameter['default_payment_type_code'] > 0 ) {
 				$query->where('default_payment_type_code', $parameter['default_payment_type_code']);
 			}
 		})
-		->orderBy($parameter['sort_field'], $parameter['orderby'])
-		->paginate($parameter['limit']);
-		return $customer;
+//		->orderBy($parameter['sort_field'], $parameter['orderby'])
+		->paginate(20);
+//		->paginate($parameter['limit']);
+//		default_order_type_code
+//		default_payment_type_code
+		$return['customer'] = $customer;
+		$return['default_order_type_code'] = [
+			0 => '',
+			1 => '네이버',
+			2 => '라인',
+			3 => '야후',
+			4 => '전화',
+			5 => '페이스북',
+			6 => '현장판매',
+			7 => '홈피',
+		];
+		$return['default_payment_type_code'] = [
+			0 => '',
+			1 => '계좌입금',
+			2 => '월말청구',
+			3 => '해외송금',
+			4 => '크레딧',
+			5 => '현장판매',
+			6 => '홈피결제',
+		];
+
+		return $return;
 	}
 
 }

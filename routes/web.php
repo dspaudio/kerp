@@ -14,7 +14,7 @@
 Route::get('/', function () {
     return view('welcome');
 });
-
+Route::get('/customer/','CustomerController@index')->name('customer.list');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');

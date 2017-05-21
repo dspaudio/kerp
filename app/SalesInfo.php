@@ -29,6 +29,9 @@ class SalesInfo extends Model
 	    'manufacture_name',
 	    'manufacture_code',
 		'sales_quantity',
+	    'shipped_quantity',
+	    'pended_quantity',
+	    'is_order_in',
 		'unit_price',
 		'charged',
 		'event_memo',
@@ -48,6 +51,15 @@ class SalesInfo extends Model
 	{
 		return $this->hasMany('App\OrderInInfo', 'sales_info_id', 'id');
     }
+
+	/**
+	 * ShipPackageContent 관계설정
+	 * @return \Illuminate\Database\Eloquent\Relations\HasMany
+	 */
+	public function ship_package_content()
+	{
+		return $this->hasMany('App\ShipPackageContent', 'sales_info_id', 'id');
+	}
 
 	/**
 	 * Customer 관계설정
@@ -117,8 +129,10 @@ class SalesInfo extends Model
 							}
 						});
 				}
-			],
-			[
+		//	],[
+				//ship_package_content
+
+			],[
 				'customer' => function ($query) use ($parameter) {
 					$query->where(function ($query) use ($parameter) {
 						if (isset($parameter['customer_search_string'])) {

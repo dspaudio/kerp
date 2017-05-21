@@ -12,11 +12,15 @@ class ShipInfo extends Model
 		'id',
 		'ship_type_code',
 		'ship_progress_code',
-		'address_id',
+		'contact',
+		'addressee',
+		'address',
+		'zip_code',
+		'contents',
 		'staff_id',
 		'ship_out_date',
 		'ship_received_date',
-	    'ship_pic',
+		'ship_pic',
 		'ship_invoice_code',
 		'memo',
     ];
@@ -34,10 +38,10 @@ class ShipInfo extends Model
 	 * Address 관계설정
 	 * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
 	 */
-	public function address()
-	{
-		return $this->belongsTo('App\Address', 'address_id', 'id');
-    }
+//	public function address()
+//	{
+//		return $this->belongsTo('App\Address', 'address_id', 'id');
+//    }
 
 	/**
 	 * Staff 관계설정

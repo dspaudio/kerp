@@ -36,7 +36,10 @@ class CreateSalesInfoTable extends Migration
 	        $table->string('manufacture_name')->nullable()->comment('이름');
 	        $table->string('manufacture_code')->nullable()->comment('code');
 
-            $table->integer('sales_quantity')->comment('주문수량');
+	        $table->integer('sales_quantity')->comment('주문수량');
+	        $table->integer('shipped_quantity')->comment('기발송수량, 패키징작업 발송작업 시에 자동으로 계산 입력된다');
+            $table->integer('pended_quantity')->comment('발송대기수량, 패키징작업 발송작업시 자동계산되어 입력된다');
+	        $table->integer('is_order_in')->comment('해당매출에 엮인 발주가 있는가');
             $table->integer('unit_price')->comment('단가');
             $table->integer('charged')->comment('청구액.*+1행사등으로 수량*단가가 안맞을수 있음 그래서 청구가 따로넣음');
             $table->string('event_memo')->nullable()->comment('이벤트 내용 쓰기. +1행사등 덤주거나 할인해주거한내용 적기');

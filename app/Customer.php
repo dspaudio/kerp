@@ -106,7 +106,7 @@ class Customer extends Model
 				$query->where('default_payment_type_code', $parameter['default_payment_type_code']);
 			}
 		})
-//		->orderBy($parameter['sort_field'], $parameter['orderby'])
+		->orderBy($parameter['sort_field'], $parameter['orderby'])
 		->paginate(20);
 //		->paginate($parameter['limit']);
 //		default_order_type_code

@@ -12,7 +12,8 @@ class CustomerController extends Controller
 	public function index(Request $request)
 	{
 		$parameter = [
-			// 검색 내용
+			'sort_field' => 'customer_name',
+			'orderby' => 'asc',
 		];
 
 		$customer_list = Customer::customer_list($parameter);

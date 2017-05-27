@@ -78,26 +78,7 @@
     <!-- Scripts -->
     {{--<script src="{{ asset('js/app.js') }}"></script>--}}
     <script src="{{ mix('js/app.js') }}"></script>
-    <script>
-    $(function () {
-//        alert('ready');
-        $(".order_desc").click(function () {
-            alert('ready');
-            $("#orderby").val('desc');
-            $("#search_form").submit();
-        });
-        $(".order_asc").click(function () {
-            $("#orderby").val('asc');
-            $("#search_form").submit();
-        });
-        $("#sort_by_status").click(function () {
-            $("#orderby").val('asc');
-            $("#sort_field").children("option").prop('selected', false);
-            $("#order_status").prop('selected', true);
-            $("#search_form").submit();
-        });
-    });
-    </script>
+    @yield('script')
 
 </body>
 </html>

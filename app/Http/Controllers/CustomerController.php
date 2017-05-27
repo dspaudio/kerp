@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Customer;
+use App\Staff;
 use Illuminate\Http\Request;
 use function redirect;
 
@@ -11,14 +12,17 @@ class CustomerController extends Controller
 	// 목록 표시
 	public function index(Request $request)
 	{
+		$sort_field = $request->input('sort_field') ?? 'customer_name';
+		$order_by = $request->input('orderby') ?? 'asc';
 		$parameter = [
-			'sort_field' => 'customer_name',
-			'orderby' => 'asc',
+			'sort_field' => $sort_field,
+			'orderby' => $order_by,
 		];
 
 		$customer_list = Customer::customer_list($parameter);
+		$staff_list = Staff::get();
 
-		return view('customer.list', compact('customer_list', 'parameter'));
+		return view('customer.list', compact('customer_list', 'staff_list', 'parameter'));
     }
 
     // 고객 상세

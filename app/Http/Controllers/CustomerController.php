@@ -25,12 +25,18 @@ class CustomerController extends Controller
 		return view('customer.list', compact('customer_list', 'staff_list', 'parameter'));
     }
 
-    // 고객 상세
+    // 목록 표시
+	public function list(Request $request)
+	{
+		$customer_list = Customer::with('address','orderer')->get();
+		return response()->json($customer_list,200);
+	}
+
+
+	// 고객 상세
 	public function view(Customer $customer, Request $request)
 	{
-		$customer->load(['address' => function($query) {
-			$query->with('contact');
-		}], 'orderer', 'staff');
+		$customer->load('address', 'orderer', 'staff');
 
 		return response()->json($customer);
 	}

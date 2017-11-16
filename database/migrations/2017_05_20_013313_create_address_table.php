@@ -21,6 +21,9 @@ class CreateAddressTable extends Migration
             $table->string('address')->comment('배송주소');
             $table->string('address_jp')->nullable()->comment('배송주소 일어');
             $table->string('zip_code')->nullable()->comment('우편번호');
+	        $table->string('tel')->nullable()->comment('전화번호');
+	        $table->string('fax')->nullable()->comment('팩스번호');
+	        $table->string('mobile')->nullable()->comment('모바일번호');
             $table->string('memo')->nullable()->comment('특이사항');
             $table->softDeletes();
             $table->timestamps();

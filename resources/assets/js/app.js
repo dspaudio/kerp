@@ -5,7 +5,8 @@
  * building robust, powerful web applications using Vue and Laravel.
  */
 require('./bootstrap');
-
+require('../../../node_modules/jqGrid/js/i18n/grid.locale-kr.js');
+require('../../../node_modules/jqGrid/js/jquery.jqGrid.js');
 // window.Vue = require('vue');
 
 /**

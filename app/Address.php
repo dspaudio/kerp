@@ -16,6 +16,9 @@ class Address extends Model
 		'address',
 		'address_jp',
 		'zip_code',
+	    'tel',
+	    'fax',
+	    'mobile',
 		'memo',
     ];
 
@@ -28,10 +31,10 @@ class Address extends Model
 		return $this->belongsTo('App\Customer', 'customer_id', 'id');
     }
 
-	public function contact()
-	{
-		return $this->hasMany('App\Contact', 'address_id', 'id');
-    }
+//	public function contact()
+//	{
+//		return $this->hasMany('App\Contact', 'address_id', 'id');
+//    }
 
 
 }

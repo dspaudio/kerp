@@ -27,7 +27,7 @@ class Customer extends Model
 	 */
 	public function address()
 	{
-		return $this->hasMany('App\Address','address_id','id');
+		return $this->hasMany('App\Address','customer_id','id');
     }
 
 	/**
@@ -107,8 +107,8 @@ class Customer extends Model
 			}
 		})
 		->orderBy($parameter['sort_field'], $parameter['orderby'])
-		->paginate(20);
-//		->paginate($parameter['limit']);
+//		->paginate(20);
+		->paginate($parameter['limit'] ?? 20);
 //		default_order_type_code
 //		default_payment_type_code
 		$return['customer'] = $customer;
